@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 test('alerts', async ({ page }) => {
     await page.goto('https://demoqa.com/alerts');
 
-    page.once('dialog', async dialog =>{
+    page.once('dialog', async dialog => {
         console.log(dialog.message());
         await dialog.accept();
     });
@@ -11,7 +11,7 @@ test('alerts', async ({ page }) => {
 
 
     // enter text and accept dialog
-    page.once('dialog', async dialog =>{
+    page.once('dialog', async dialog => {
         console.log(dialog.message());
         await dialog.accept('my text is this');
     });
@@ -20,4 +20,3 @@ test('alerts', async ({ page }) => {
     const result = `[id="promptResult"]`;
     expect(await page.innerText(result)).toBe('You entered my text is this');
 });
-
